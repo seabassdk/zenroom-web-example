@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+
 <head>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' >
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
 </head>
 <html>
 
 <body style="padding-left: 20px; padding-right: 24px; margin: 0; padding-bottom: 20px;">
-	<h2>Zencode with id="z-zencode"  (<a href="https://dev.zenroom.org/#/pages/zencode-cookbook-intro" target="_blank">link to docs</a>) :</h2>
+	<h2>Zencode with id="z-zencode" (<a href="https://dev.zenroom.org/#/pages/zencode-cookbook-intro"
+			target="_blank">link to docs</a>) :</h2>
 	<textarea rows="10" id="z-zencode" style="width: 100%;">
 Scenario 'ecdh': Encrypt a message with the password 
 Given that I have a 'string' named 'password' 
@@ -29,7 +31,7 @@ Then print the 'secret message'
 	</textarea>
 	<div style="margin-top: 20px;">
 		<button id="runBtn" style="font-size: 18px; margin-right: 20px;">Run!</button>
-		<button id="storeBtn"  style="font-size: 18px;">Store in browser</button>
+		<button id="storeBtn" style="font-size: 18px;">Store in browser</button>
 	</div>
 	<div style="width: 100%;">
 		<h2>Result:</h2>
@@ -47,25 +49,26 @@ Then print the 'secret message'
 	<script type="module">
 		import zenroom from 'https://jspm.dev/zenroom@next';
 
-		var zencode = document.getElementById("z-zencode").textContent;
-		var keys = document.getElementById("z-keys").textContent;
-		var data = document.getElementById("z-data").textContent;
-
-		const props = {
-			script: zencode,
-			keys: keys,
-			data: data,
-			print_err: (text) => {
-				let result = document.getElementById("logs");
-				result.textContent += text
-			},
-			print: (text) => {
-				let result = document.getElementById("result");
-				result.textContent += text
-			}
-		}
 
 		document.getElementById("runBtn").addEventListener("click", function () {
+			var zencode = document.getElementById("z-zencode").textContent;
+			var keys = document.getElementById("z-keys").textContent;
+			var data = document.getElementById("z-data").textContent;
+
+			const props = {
+				script: zencode,
+				keys: keys,
+				data: data,
+				print_err: (text) => {
+					let result = document.getElementById("logs");
+					result.textContent += text
+				},
+				print: (text) => {
+					let result = document.getElementById("result");
+					result.textContent += text
+				}
+			}
+			
 			zenroom.init(props).zencode_exec();
 		});
 
