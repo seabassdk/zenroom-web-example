@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<h4>Zencode with id="z-zencode":</h4>
+	<p id="z-zencode">
+		Scenario 'ecdh': Encrypt a message with the password 
+		Given that I have a 'string' named 'password' 
+		Given that I have a 'string' named 'header' 
+		Given that I have a 'string' named 'message' 
+		When I encrypt the secret message 'message' with 'password' 
+		Then print the 'secret message'
+	</p>
+	<h4>Keys with id="z-keys":</h4>
+	<p id="z-keys">
+		{
+			"password": "myVerySecretPassword"
+		}
+	</p>
+	<h4>Data with id="z-keys":</h4>
+	<p id="z-data">
+		{
+			"header": "A very important secret",
+			"message": "Dear Bob, your name is too short, goodbye - Alice."
+		}
+	</p>
+	<pre id="result"></pre>
+	<br />
+	<hr /> <br />
+	<pre id="logs" style="color:indianred;"></pre>
+	<script type="module">
+		import zenroom from 'https://jspm.dev/zenroom@next';
+
+		var zencode = document.getElementById("z-zencode").textContent;
+		var keys = document.getElementById("z-keys").textContent;
+		var data = document.getElementById("z-data").textContent;
+
+		const props = {
+			script: zencode,
+			keys: keys,
+			data: data,
+			print_err: (text) => {
+				let result = document.getElementById("logs");
+				result.textContent += text
+			},
+			print: (text) => {
+				let result = document.getElementById("result");
+				result.textContent += text
+			}
+		}
+		zenroom.init(props).zencode_exec()
+	</script>
+</body>
+
+</html>
