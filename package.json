@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prestart": "lnk ./node_modules/zenroom/dist/lib/zenroom.wasm .",
+    "postinstall": "lnk ./node_modules/zenroom/dist/lib/zenroom.wasm .",
     "start": "watch-http-server . -o"
   },
   "dependencies": {
