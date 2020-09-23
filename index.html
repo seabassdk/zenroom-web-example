@@ -51,9 +51,12 @@ Then print the 'secret message'
 
 
 		document.getElementById("runBtn").addEventListener("click", function () {
-			var zencode = document.getElementById("z-zencode").textContent;
-			var keys = document.getElementById("z-keys").textContent;
-			var data = document.getElementById("z-data").textContent;
+			document.getElementById("result").textContent = '';
+			document.getElementById("logs").textContent = '';
+
+			var zencode = document.getElementById("z-zencode").value;
+			var keys = document.getElementById("z-keys").value;
+			var data = document.getElementById("z-data").value;
 
 			const props = {
 				script: zencode,
@@ -68,7 +71,7 @@ Then print the 'secret message'
 					result.textContent += text
 				}
 			}
-			
+
 			zenroom.init(props).zencode_exec();
 		});
 
