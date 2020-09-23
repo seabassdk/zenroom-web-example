@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+<head>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0' >
+</head>
 <html>
 
-<body style="padding-left: 20px; padding-right: 24px; margin: 0">
-	<h4>Zencode with id="z-zencode"  (<a href="https://dev.zenroom.org/#/pages/zencode-cookbook-intro" target="_blank">link to docs</a>) :</h4>
+<body style="padding-left: 20px; padding-right: 24px; margin: 0; padding-bottom: 20px;">
+	<h2>Zencode with id="z-zencode"  (<a href="https://dev.zenroom.org/#/pages/zencode-cookbook-intro" target="_blank">link to docs</a>) :</h2>
 	<textarea rows="10" id="z-zencode" style="width: 100%;">
 Scenario 'ecdh': Encrypt a message with the password 
 Given that I have a 'string' named 'password' 
@@ -11,13 +14,13 @@ Given that I have a 'string' named 'message'
 When I encrypt the secret message 'message' with 'password' 
 Then print the 'secret message'
 	</textarea>
-	<h4>Keys with id="z-keys":</h4>
-	<textarea rows="6" id="z-keys" style="width: 100%;">
+	<h2>Keys with id="z-keys":</h2>
+	<textarea rows="6" cols="50" id="z-keys" style="width: 100%;">
 {
 	"password": "myVerySecretPassword"
 }
 	</textarea>
-	<h4>Data with id="z-keys":</h4>
+	<h2>Data with id="z-keys":</h2>
 	<textarea rows="6" id="z-data" style="width: 100%;">
 {
 	"header": "A very important secret",
@@ -25,11 +28,11 @@ Then print the 'secret message'
 }
 	</textarea>
 	<div style="margin-top: 20px;">
-		<button id="runBtn">Run!</button>
+		<button id="runBtn"><em>PLAY▶️</em></button>
 		<button id="storeBtn">Store in browser!</button>
 	</div>
 	<div style="width: 100%;">
-		<h4>Result:</h4>
+		<h2>Result:</h2>
 		<div style="width: 100%; overflow: scroll; padding-bottom: 20px;">
 			<pre id="result"></pre>
 		</div>
