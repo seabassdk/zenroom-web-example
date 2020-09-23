@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html>
 
-<body>
-	<h4>Zencode with id="z-zencode":</h4>
-	<p id="z-zencode">
-		Scenario 'ecdh': Encrypt a message with the password 
-		Given that I have a 'string' named 'password' 
-		Given that I have a 'string' named 'header' 
-		Given that I have a 'string' named 'message' 
-		When I encrypt the secret message 'message' with 'password' 
-		Then print the 'secret message'
-	</p>
+<body style="padding-left: 20px; padding-right: 24px; margin: 0">
+	<h4>Zencode with id="z-zencode"  (<a href="https://dev.zenroom.org/#/pages/zencode-cookbook-intro" target="_blank">link to docs</a>) :</h4>
+	<textarea rows="10" id="z-zencode" style="width: 100%;">
+Scenario 'ecdh': Encrypt a message with the password 
+Given that I have a 'string' named 'password' 
+Given that I have a 'string' named 'header' 
+Given that I have a 'string' named 'message' 
+When I encrypt the secret message 'message' with 'password' 
+Then print the 'secret message'
+	</textarea>
 	<h4>Keys with id="z-keys":</h4>
-	<p id="z-keys">
-		{
-			"password": "myVerySecretPassword"
-		}
-	</p>
+	<textarea rows="6" id="z-keys" style="width: 100%;">
+{
+	"password": "myVerySecretPassword"
+}
+	</textarea>
 	<h4>Data with id="z-keys":</h4>
-	<p id="z-data">
-		{
-			"header": "A very important secret",
-			"message": "Dear Bob, your name is too short, goodbye - Alice."
-		}
-	</p>
-	<pre id="result"></pre>
-	<br />
-	<hr /> <br />
-	<pre id="logs" style="color:indianred;"></pre>
+	<textarea rows="6" id="z-data" style="width: 100%;">
+{
+	"header": "A very important secret",
+	"message": "Dear Bob, your name is too short, goodbye - Alice."
+}
+	</textarea>
+	<div style="margin-top: 20px;">
+		<button id="runBtn">Run!</button>
+		<button id="storeBtn">Store in browser!</button>
+	</div>
+	<div style="width: 100%;">
+		<h4>Result:</h4>
+		<div style="width: 100%; overflow: scroll; padding-bottom: 20px;">
+			<pre id="result"></pre>
+		</div>
+		<br />
+
+		<hr /> <br />
+
+		<pre id="logs" style="color:indianred;"></pre>
+
+	</div>
+
 	<script type="module">
 		import zenroom from 'https://jspm.dev/zenroom@next';
 
@@ -48,7 +61,31 @@
 				result.textContent += text
 			}
 		}
-		zenroom.init(props).zencode_exec()
+
+		document.getElementById("runBtn").addEventListener("click", function () {
+			zenroom.init(props).zencode_exec();
+		});
+
+		document.getElementById("storeBtn").addEventListener("click", function () {
+			var result = document.getElementById("result").textContent;
+			if (result) {
+				console.log('storing item');
+				var item = localStorage.getItem('savedItems') ? parseInt(localStorage.getItem('savedItems')) + 1 : 1;
+				console.log('item number: ' + item);
+
+
+				var itemNumber = toString(item);
+				var itemName = result;
+				console.log('item number ' + itemNumber);
+				localStorage.setItem('savedItems', item);
+				localStorage.setItem(item, itemName);
+			}
+		});
+
+
+
+
+
 	</script>
 </body>
 
